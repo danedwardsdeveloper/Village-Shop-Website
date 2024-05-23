@@ -1,0 +1,565 @@
+@import url("https://fonts.cdnfonts.com/css/bodoni");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;1,300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,600;1,600&display=swap");
+
+$green-dark: #344e41;
+$green-medium: #3a5a40;
+$green-light: #a3b18a;
+$brown-medium: #dad7cd;
+$brown-light: #e9e7e1;
+$accent: #dc3545;
+$light-text: whitesmoke;
+$transparent: 0.2;
+$rounded: 0.4rem;
+$phone: 600px;
+$tablet: 840px;
+
+html {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: $accent;
+}
+
+.italic {
+  font-style: italic;
+}
+
+:focus-visible {
+  outline: 2px solid $accent;
+  outline-offset: 6px;
+  border-radius: 4px;
+}
+
+@mixin montserrat-light {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+::selection {
+  background: $accent;
+  color: yellow;
+}
+
+strong {
+  font-weight: bold;
+}
+
+.hidden {
+  display: none;
+}
+
+.pb-1 {
+  padding-bottom: 1rem;
+}
+
+body {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  margin: 0;
+  height: 100vh;
+  @media (max-width: $phone) {
+    height: auto;
+  }
+}
+
+nav {
+  grid-column: 1 / 2;
+  background-color: $brown-medium;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  @media (max-width: $phone) {
+    grid-column: 1 / 3;
+  }
+  a .logo-container {
+    height: min-content;
+    width: auto;
+    &.border-bottom {
+      padding-bottom: 1rem;
+      border-bottom: solid $green-light;
+      border-bottom-width: 2px;
+      transition: all 0.5s ease-in-out;
+    }
+    @media (max-width: $phone) {
+      display: flex;
+      justify-content: center;
+    }
+    img {
+      height: auto;
+      display: block;
+      max-width: 200px;
+    }
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding-top: 3rem;
+    padding-left: 1rem;
+    @media (max-width: $tablet) {
+      padding-left: 0.2rem;
+    }
+
+    @media (max-width: $phone) {
+      // display: none;
+      height: 100vh;
+      overflow-y: hidden;
+      align-self: center;
+      transition: all 0.5s ease-in-out;
+
+      &.collapsed {
+        transition: all 0.5s ease-in-out;
+        height: 0;
+        padding: 0;
+      }
+    }
+    & li {
+      padding-bottom: 3rem;
+      @media (max-width: $phone) {
+        padding-bottom: 5rem;
+      }
+      & a {
+        color: black;
+        text-decoration: none;
+        font-size: 1rem;
+        & p {
+          margin: 0;
+        }
+        .active {
+          color: $accent;
+        }
+      }
+    }
+  }
+
+  .icon {
+    color: black;
+    padding-right: 0.2rem;
+    vertical-align: baseline;
+  }
+}
+
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+  &:hover {
+    color: $accent;
+    &::after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+  }
+  & > a :hover {
+    color: $accent;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 4px;
+    bottom: -5px;
+    left: 0;
+    background-color: $accent;
+    transform-origin: bottom right;
+    transition: transform 0.4s ease-out;
+  }
+}
+
+p.active {
+  color: $accent;
+  &::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+}
+
+main {
+  grid-column: 2 / 3;
+  @media (max-width: $phone) {
+    grid-column: 1 / 3;
+  }
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+section {
+  margin: 0;
+  padding: 2rem;
+  @media (max-width: $tablet) {
+    padding: 1rem;
+  }
+  &:nth-of-type(even) {
+    background-color: $brown-light;
+  }
+  &:nth-of-type(odd):not(:first-of-type) {
+    background-color: $green-light;
+  }
+}
+
+#section-1 {
+  min-height: 95vh;
+  padding: 2rem 10rem;
+  background-color: $green-medium;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  column-gap: 2rem;
+  grid-template-rows: min-content min-content min-content;
+  row-gap: 2rem;
+  color: whitesmoke;
+  @media (max-width: $tablet) {
+    padding: 1rem 2rem;
+  }
+  @media (max-width: $phone) {
+    padding: 1rem 1rem;
+  }
+  .hero-image-container {
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+    align-content: end;
+    img {
+      width: 100%;
+      max-height: auto;
+      display: block;
+      border-radius: 0.4rem;
+    }
+  }
+  .hero-text-container {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    margin: 0;
+    align-content: baseline;
+    text-align: right;
+    line-height: 1.4;
+    text-align: justify;
+    padding: 0;
+    display: inline;
+    @media (max-width: $phone) {
+      grid-column: 1 / 3;
+    }
+    h1 {
+      @include montserrat-light();
+      font-size: 1rem;
+      font-weight: bold;
+      display: inline;
+    }
+    p {
+      display: inline;
+    }
+  }
+  .cta-container {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    align-content: end;
+    text-align: end;
+    @media (max-width: $phone) {
+      grid-column: 1 / 3;
+      grid-row: 3 / 4;
+      text-align: center;
+    }
+    p {
+      margin-bottom: 0.8rem;
+      margin-top: 0.4rem;
+    }
+  }
+}
+
+#section-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 30px;
+  table,
+  th,
+  td {
+    border: 1px solid grey;
+    padding: 0.6em 0.4em;
+  }
+  table {
+    border-collapse: collapse;
+    vertical-align: middle;
+    tr:nth-child(odd) {
+      background-color: rgba($brown-medium, 0.4);
+    }
+    tr:nth-child(even) {
+      background-color: rgba($green-light, 0.4);
+    }
+    tr:hover {
+      background-color: rgba($accent, 0.2);
+    }
+    tr td strong {
+      margin-bottom: 1rem;
+    }
+    tr.today {
+      background-color: rgba($accent, 0.4);
+    }
+  }
+  .heading {
+    grid-column: 1 / 3;
+  }
+  .table-1 {
+    grid-column: 1 / 2;
+    table {
+      width: 100%;
+    }
+    @media (max-width: $tablet) {
+      grid-column: 1 / 3;
+    }
+  }
+  .table-2 {
+    grid-column: 2 / 3;
+    @media (max-width: $tablet) {
+      grid-column: 1 / 3;
+    }
+  }
+  .col-1 {
+    width: 40%;
+  }
+  .col-2 {
+    width: 60%;
+  }
+  .italic {
+    font-style: italic;
+    font-size: small;
+  }
+  a {
+    color: $accent;
+  }
+}
+
+#section-4 {
+  .services-list {
+    list-style: none;
+    column-count: 2;
+    column-gap: 10%;
+    line-height: 1.4;
+    li {
+      margin-bottom: 1rem;
+      padding: 0.2rem 0.4rem;
+      border-radius: $rounded;
+    }
+    @include montserrat-light();
+    @media (max-width: $phone) {
+      column-count: 1;
+    }
+  }
+  li:hover {
+    background-color: rgba($accent, 0.2);
+  }
+}
+
+#section-5 {
+  padding: 0;
+}
+
+footer {
+  padding: 3rem 2rem 0 2rem;
+  background-color: $green-dark;
+  ul {
+    display: block;
+    column-count: 3;
+    margin: 0 auto;
+    padding: 12rem 0 0 0;
+    list-style: none;
+    @media (max-width: $phone) {
+      column-count: 1;
+    }
+    column-gap: 40px;
+    row-gap: 5px;
+    li {
+      break-inside: avoid;
+      min-height: 100px;
+      margin-bottom: 3rem;
+      // @media (max-width: 840px) {
+      //   margin-top: 3rem;
+      // }
+      @media (max-width: $phone) {
+        min-height: auto;
+      }
+      p {
+        margin: 0;
+        padding: 0;
+      }
+    }
+  }
+  li,
+  li a {
+    color: whitesmoke;
+    @include montserrat-light();
+  }
+}
+
+.phone-number {
+  letter-spacing: 0.1em;
+}
+
+.footer-address {
+  line-height: 1.2em;
+}
+
+.location-grid {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  @media (max-width: $phone) {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+    row-gap: 2rem;
+  }
+  column-gap: 2rem;
+  .info-column {
+    grid-column: 1 / 2;
+    @media (max-width: $phone) {
+      grid-column: 1 / 3;
+      order: 2;
+    }
+    address {
+      margin-bottom: 1rem;
+    }
+    .button-container {
+      margin-bottom: 2rem;
+      button {
+        display: inline-block;
+        margin: 0.2rem;
+        width: 150px;
+        height: 35px;
+      }
+    }
+  }
+  .map-column {
+    grid-column: 2 / 3;
+    @media (max-width: $phone) {
+      grid-column: 1 / 3;
+      order: 1;
+    }
+  }
+}
+
+.google-map-container {
+  height: 400px;
+  display: flex;
+  justify-content: end;
+}
+
+#map {
+  border-radius: $rounded;
+  max-height: 100%;
+  width: auto;
+  overflow: hidden;
+  display: block;
+}
+
+h2 {
+  font-family: "Bodoni", serif;
+  font-size: 3em;
+  font-style: italic;
+}
+
+h3 {
+  font-family: "Bodoni", serif;
+  font-size: 1.4rem;
+  font-style: italic;
+  font-weight: normal;
+  margin: 0 0 0.4rem 0;
+}
+
+p,
+address,
+h4,
+td {
+  @include montserrat-light();
+}
+
+.highlight {
+  background-color: lightgrey;
+}
+
+.copy-icon {
+  fill: $accent;
+}
+
+.btn {
+  background-color: $accent;
+  color: $light-text;
+  border: 1px solid transparent;
+  padding: 6px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  &:hover {
+    background-color: darken($accent, 14%);
+  }
+}
+
+.btn-neutral {
+  background-color: $green-medium;
+  &:hover {
+    background-color: darken($green-medium, 14%);
+  }
+}
+
+.accordion {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @include montserrat-light;
+  background-color: hsla(0, 0%, 100%, 20%);
+  margin: 0;
+  padding: 0.8rem 0.5rem;
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 1rem;
+  transition: 0.4s;
+  border-top: 1px solid grey;
+}
+.accordion:focus-visible {
+  border: 2px solid $accent;
+  border-radius: 4px;
+}
+
+.question {
+  max-width: 80%;
+}
+
+.panel {
+  max-height: 0;
+  padding: 0 0.5rem;
+  color: #474747;
+  background-color: hsla(0, 0%, 100%, 10%);
+  transition: max-height 0.2s ease-in;
+  font-size: 1rem;
+  overflow: hidden;
+}
+.panel:last-of-type {
+  border-bottom: 1px solid grey;
+}
+
+.toggle-icon-background {
+  padding: 0.4rem;
+  background-color: hsla(210, 14%, 97%, 40%);
+  height: 2rem;
+  width: 2rem;
+  border-radius: 100%;
+  text-align: center;
+}
+
+.toggle-icon {
+  height: 2rem;
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+  transition: transform 0.3s ease-in-out;
+}
+
+.upside-down {
+  transform: rotate(-180deg);
+}
