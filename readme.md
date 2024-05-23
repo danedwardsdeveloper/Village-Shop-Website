@@ -26,8 +26,8 @@
 
 - [ ] Improve design & spacing of hero section. More white space
 - [ ] Add `.htaccess` file
+- [ ] Favicon
 - [ ] Replace Font-Awesome icons with local Google material symbols
-- [ ] Add Simple Analytics
 - [ ] Add multiple image sizes for hero image
 - [ ] Improve mobile navigation. Close menu when link clicked. Add a menu icon.
 - [ ] Rename section links so they are descriptive in the URL
