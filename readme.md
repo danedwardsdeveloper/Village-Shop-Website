@@ -1,5 +1,7 @@
 [Live preview](https://danedwardsdeveloper.github.io/Village-Shop-Website/)
 
+![Village shop website desktop mockup](/assets/images/mac-mockup.webp "Village shop website desktop mockup")
+
 # About
 
 **Single-page website for a fictional village shop**
